@@ -1,0 +1,1711 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="kaomeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="account_id" />
+          </Key>
+          <Property Name="account_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="password" Type="varchar(max)" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="char" MaxLength="1" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="create_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="update_at" Type="datetime" Nullable="false" />
+          <Property Name="Requestcode" Type="nvarchar" MaxLength="100" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Avatar" Type="text" />
+          <Property Name="Role" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountAddress">
+          <Key>
+            <PropertyRef Name="account_address_id" />
+          </Key>
+          <Property Name="account_address_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="account_id" Type="int" Nullable="false" />
+          <Property Name="province_id" Type="int" Nullable="false" />
+          <Property Name="district_id" Type="int" Nullable="false" />
+          <Property Name="ward_id" Type="int" Nullable="false" />
+          <Property Name="accountPhoneNumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="accountUsername" Type="nvarchar" MaxLength="20" />
+          <Property Name="content" Type="nvarchar" MaxLength="50" />
+          <Property Name="isDefault" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="brand_id" />
+          </Key>
+          <Property Name="brand_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brand_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="contact_id" />
+          </Key>
+          <Property Name="contact_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="phone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="create_by" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="update_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="delivery_id" />
+          </Key>
+          <Property Name="delivery_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="delivery_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="status" Type="char" MaxLength="1" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="update_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Discount">
+          <Key>
+            <PropertyRef Name="disscount_id" />
+          </Key>
+          <Property Name="disscount_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="discount_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="discount_star" Type="datetime" Nullable="false" />
+          <Property Name="discount_end" Type="datetime" Nullable="false" />
+          <Property Name="discount_price" Type="float" Nullable="false" />
+          <Property Name="discount_code" Type="nvarchar" MaxLength="10" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="create_by" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Districts">
+          <Key>
+            <PropertyRef Name="district_id" />
+          </Key>
+          <Property Name="district_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="province_id" Type="int" Nullable="false" />
+          <Property Name="district_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="feedback_id" />
+          </Key>
+          <Property Name="feedback_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="account_id" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="genre_id" Type="int" Nullable="false" />
+          <Property Name="disscount_id" Type="int" Nullable="false" />
+          <Property Name="rate_star" Type="int" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="stastus" Type="char" MaxLength="1" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="update_at" Type="datetime" />
+          <Property Name="content" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="genre_id" />
+          </Key>
+          <Property Name="genre_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="genre_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Oder_Detail">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="genre_id" />
+            <PropertyRef Name="disscount_id" />
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="genre_id" Type="int" Nullable="false" />
+          <Property Name="disscount_id" Type="int" Nullable="false" />
+          <Property Name="order_id" Type="int" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="status" Type="char" MaxLength="1" />
+          <Property Name="transection" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="payment_id" Type="int" Nullable="false" />
+          <Property Name="delivery_id" Type="int" Nullable="false" />
+          <Property Name="oder_date" Type="datetime" Nullable="false" />
+          <Property Name="total" Type="float" Nullable="false" />
+          <Property Name="account_id" Type="int" Nullable="false" />
+          <Property Name="status" Type="char" MaxLength="1" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Nullable="false" />
+          <Property Name="order_note" Type="nvarchar" MaxLength="200" />
+          <Property Name="orderAddressId" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderAddress">
+          <Key>
+            <PropertyRef Name="orderAddressId" />
+          </Key>
+          <Property Name="orderAddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderPhonenumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="orderUsername" Type="nvarchar" MaxLength="20" />
+          <Property Name="content" Type="nvarchar" MaxLength="150" />
+          <Property Name="timesEdit" Type="int" Nullable="false" />
+          <Property Name="province_id" Type="int" />
+          <Property Name="district_id" Type="int" />
+          <Property Name="ward_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="payment_id" />
+          </Key>
+          <Property Name="payment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="payment_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="create_by" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="status" Type="char" MaxLength="1" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="update_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="genre_id" />
+            <PropertyRef Name="disscount_id" />
+          </Key>
+          <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="genre_id" Type="int" Nullable="false" />
+          <Property Name="disscount_id" Type="int" Nullable="false" />
+          <Property Name="brand_id" Type="int" Nullable="false" />
+          <Property Name="product_name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="view" Type="bigint" Nullable="false" />
+          <Property Name="buyturn" Type="bigint" Nullable="false" />
+          <Property Name="quantity" Type="varchar" MaxLength="10" />
+          <Property Name="status" Type="char" MaxLength="1" />
+          <Property Name="create_by" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="Type" Type="int" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="update_at" Type="datetime" Nullable="false" />
+          <Property Name="specifications" Type="nvarchar(max)" />
+          <Property Name="image" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ProductImages">
+          <Key>
+            <PropertyRef Name="product_img_id" />
+          </Key>
+          <Property Name="product_img_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="genre_id" Type="int" Nullable="false" />
+          <Property Name="disscount_id" Type="int" Nullable="false" />
+          <Property Name="image" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Provinces">
+          <Key>
+            <PropertyRef Name="province_id" />
+          </Key>
+          <Property Name="province_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="province_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReplyFeedback">
+          <Key>
+            <PropertyRef Name="rep_feedback_id" />
+          </Key>
+          <Property Name="rep_feedback_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="nvarchar(max)" />
+          <Property Name="stastus" Type="nvarchar" MaxLength="1" />
+          <Property Name="create_at" Type="datetime" Nullable="false" />
+          <Property Name="feedback_id" Type="int" Nullable="false" />
+          <Property Name="account_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wards">
+          <Key>
+            <PropertyRef Name="ward_id" />
+          </Key>
+          <Property Name="ward_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="district_id" Type="int" Nullable="false" />
+          <Property Name="ward_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AccountAddress_dbo_Account_account_id">
+          <End Role="Account" Type="Self.Account" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AccountAddress" Type="Self.AccountAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="AccountAddress">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AccountAddress_dbo_Districts_district_id">
+          <End Role="Districts" Type="Self.Districts" Multiplicity="1" />
+          <End Role="AccountAddress" Type="Self.AccountAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="district_id" />
+            </Principal>
+            <Dependent Role="AccountAddress">
+              <PropertyRef Name="district_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AccountAddress_dbo_Provinces_province_id">
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="1" />
+          <End Role="AccountAddress" Type="Self.AccountAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="province_id" />
+            </Principal>
+            <Dependent Role="AccountAddress">
+              <PropertyRef Name="province_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AccountAddress_dbo_Wards_ward_id">
+          <End Role="Wards" Type="Self.Wards" Multiplicity="1" />
+          <End Role="AccountAddress" Type="Self.AccountAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wards">
+              <PropertyRef Name="ward_id" />
+            </Principal>
+            <Dependent Role="AccountAddress">
+              <PropertyRef Name="ward_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Districts_dbo_Provinces_province_id">
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="province_id" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="province_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Feedback_dbo_Account_account_id">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Feedback_dbo_Product_product_id_genre_id_disscount_id">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+              <PropertyRef Name="genre_id" />
+              <PropertyRef Name="disscount_id" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="product_id" />
+              <PropertyRef Name="genre_id" />
+              <PropertyRef Name="disscount_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Oder_Detail_dbo_Order_order_id">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Oder_Detail" Type="Self.Oder_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="order_id" />
+            </Principal>
+            <Dependent Role="Oder_Detail">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Oder_Detail_dbo_Product_product_id_genre_id_disscount_id">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Oder_Detail" Type="Self.Oder_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+              <PropertyRef Name="genre_id" />
+              <PropertyRef Name="disscount_id" />
+            </Principal>
+            <Dependent Role="Oder_Detail">
+              <PropertyRef Name="product_id" />
+              <PropertyRef Name="genre_id" />
+              <PropertyRef Name="disscount_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Order_dbo_Account_account_id">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Order_dbo_Delivery_delivery_id">
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delivery">
+              <PropertyRef Name="delivery_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="delivery_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Order_dbo_Order_Address_orderAddressId">
+          <End Role="OrderAddress" Type="Self.OrderAddress" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderAddress">
+              <PropertyRef Name="orderAddressId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="orderAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Order_dbo_Payment_payment_id">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="payment_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_OrderAddress_dbo_Districts_district_id">
+          <End Role="Districts" Type="Self.Districts" Multiplicity="0..1" />
+          <End Role="OrderAddress" Type="Self.OrderAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="district_id" />
+            </Principal>
+            <Dependent Role="OrderAddress">
+              <PropertyRef Name="district_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_OrderAddress_dbo_Provinces_province_id">
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="0..1" />
+          <End Role="OrderAddress" Type="Self.OrderAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="province_id" />
+            </Principal>
+            <Dependent Role="OrderAddress">
+              <PropertyRef Name="province_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_OrderAddress_dbo_Wards_ward_id">
+          <End Role="Wards" Type="Self.Wards" Multiplicity="0..1" />
+          <End Role="OrderAddress" Type="Self.OrderAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wards">
+              <PropertyRef Name="ward_id" />
+            </Principal>
+            <Dependent Role="OrderAddress">
+              <PropertyRef Name="ward_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Product_dbo_Brand_brand_id">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="brand_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="brand_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Product_dbo_Discount_disscount_id">
+          <End Role="Discount" Type="Self.Discount" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discount">
+              <PropertyRef Name="disscount_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="disscount_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Product_dbo_Genre_genre_id">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="genre_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="genre_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ProductImages_dbo_Product_product_id_genre_id_disscount_id">
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductImages" Type="Self.ProductImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+              <PropertyRef Name="genre_id" />
+              <PropertyRef Name="disscount_id" />
+            </Principal>
+            <Dependent Role="ProductImages">
+              <PropertyRef Name="product_id" />
+              <PropertyRef Name="genre_id" />
+              <PropertyRef Name="disscount_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ReplyFeedback_dbo_Account_account_id">
+          <End Role="Account" Type="Self.Account" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReplyFeedback" Type="Self.ReplyFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="ReplyFeedback">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ReplyFeedback_dbo_Feedback_feedback_id">
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReplyFeedback" Type="Self.ReplyFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Feedback">
+              <PropertyRef Name="feedback_id" />
+            </Principal>
+            <Dependent Role="ReplyFeedback">
+              <PropertyRef Name="feedback_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Wards_dbo_Districts_district_id">
+          <End Role="Districts" Type="Self.Districts" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Wards" Type="Self.Wards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="district_id" />
+            </Principal>
+            <Dependent Role="Wards">
+              <PropertyRef Name="district_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="kaomeModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountAddress" EntityType="Self.AccountAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Discount" EntityType="Self.Discount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Oder_Detail" EntityType="Self.Oder_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderAddress" EntityType="Self.OrderAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductImages" EntityType="Self.ProductImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provinces" EntityType="Self.Provinces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReplyFeedback" EntityType="Self.ReplyFeedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wards" EntityType="Self.Wards" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AccountAddress_dbo_Account_account_id" Association="Self.FK_dbo_AccountAddress_dbo_Account_account_id">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="AccountAddress" EntitySet="AccountAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AccountAddress_dbo_Districts_district_id" Association="Self.FK_dbo_AccountAddress_dbo_Districts_district_id">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="AccountAddress" EntitySet="AccountAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AccountAddress_dbo_Provinces_province_id" Association="Self.FK_dbo_AccountAddress_dbo_Provinces_province_id">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="AccountAddress" EntitySet="AccountAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AccountAddress_dbo_Wards_ward_id" Association="Self.FK_dbo_AccountAddress_dbo_Wards_ward_id">
+            <End Role="Wards" EntitySet="Wards" />
+            <End Role="AccountAddress" EntitySet="AccountAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Districts_dbo_Provinces_province_id" Association="Self.FK_dbo_Districts_dbo_Provinces_province_id">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Feedback_dbo_Account_account_id" Association="Self.FK_dbo_Feedback_dbo_Account_account_id">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Feedback_dbo_Product_product_id_genre_id_disscount_id" Association="Self.FK_dbo_Feedback_dbo_Product_product_id_genre_id_disscount_id">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Oder_Detail_dbo_Order_order_id" Association="Self.FK_dbo_Oder_Detail_dbo_Order_order_id">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Oder_Detail" EntitySet="Oder_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Oder_Detail_dbo_Product_product_id_genre_id_disscount_id" Association="Self.FK_dbo_Oder_Detail_dbo_Product_product_id_genre_id_disscount_id">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Oder_Detail" EntitySet="Oder_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Order_dbo_Account_account_id" Association="Self.FK_dbo_Order_dbo_Account_account_id">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Order_dbo_Delivery_delivery_id" Association="Self.FK_dbo_Order_dbo_Delivery_delivery_id">
+            <End Role="Delivery" EntitySet="Delivery" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Order_dbo_Order_Address_orderAddressId" Association="Self.FK_dbo_Order_dbo_Order_Address_orderAddressId">
+            <End Role="OrderAddress" EntitySet="OrderAddress" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Order_dbo_Payment_payment_id" Association="Self.FK_dbo_Order_dbo_Payment_payment_id">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_OrderAddress_dbo_Districts_district_id" Association="Self.FK_dbo_OrderAddress_dbo_Districts_district_id">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="OrderAddress" EntitySet="OrderAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_OrderAddress_dbo_Provinces_province_id" Association="Self.FK_dbo_OrderAddress_dbo_Provinces_province_id">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="OrderAddress" EntitySet="OrderAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_OrderAddress_dbo_Wards_ward_id" Association="Self.FK_dbo_OrderAddress_dbo_Wards_ward_id">
+            <End Role="Wards" EntitySet="Wards" />
+            <End Role="OrderAddress" EntitySet="OrderAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Product_dbo_Brand_brand_id" Association="Self.FK_dbo_Product_dbo_Brand_brand_id">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Product_dbo_Discount_disscount_id" Association="Self.FK_dbo_Product_dbo_Discount_disscount_id">
+            <End Role="Discount" EntitySet="Discount" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Product_dbo_Genre_genre_id" Association="Self.FK_dbo_Product_dbo_Genre_genre_id">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ProductImages_dbo_Product_product_id_genre_id_disscount_id" Association="Self.FK_dbo_ProductImages_dbo_Product_product_id_genre_id_disscount_id">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductImages" EntitySet="ProductImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ReplyFeedback_dbo_Account_account_id" Association="Self.FK_dbo_ReplyFeedback_dbo_Account_account_id">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="ReplyFeedback" EntitySet="ReplyFeedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ReplyFeedback_dbo_Feedback_feedback_id" Association="Self.FK_dbo_ReplyFeedback_dbo_Feedback_feedback_id">
+            <End Role="Feedback" EntitySet="Feedback" />
+            <End Role="ReplyFeedback" EntitySet="ReplyFeedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Wards_dbo_Districts_district_id" Association="Self.FK_dbo_Wards_dbo_Districts_district_id">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="Wards" EntitySet="Wards" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="kaomeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="account_id" />
+          </Key>
+          <Property Name="account_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Requestcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AccountAddresses" Relationship="Self.FK_dbo_AccountAddress_dbo_Account_account_id" FromRole="Account" ToRole="AccountAddress" />
+          <NavigationProperty Name="Feedbacks" Relationship="Self.FK_dbo_Feedback_dbo_Account_account_id" FromRole="Account" ToRole="Feedback" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_dbo_Order_dbo_Account_account_id" FromRole="Account" ToRole="Order" />
+          <NavigationProperty Name="ReplyFeedbacks" Relationship="Self.FK_dbo_ReplyFeedback_dbo_Account_account_id" FromRole="Account" ToRole="ReplyFeedback" />
+        </EntityType>
+        <EntityType Name="AccountAddress">
+          <Key>
+            <PropertyRef Name="account_address_id" />
+          </Key>
+          <Property Name="account_address_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="account_id" Type="Int32" Nullable="false" />
+          <Property Name="province_id" Type="Int32" Nullable="false" />
+          <Property Name="district_id" Type="Int32" Nullable="false" />
+          <Property Name="ward_id" Type="Int32" Nullable="false" />
+          <Property Name="accountPhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="accountUsername" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="content" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isDefault" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_dbo_AccountAddress_dbo_Account_account_id" FromRole="AccountAddress" ToRole="Account" />
+          <NavigationProperty Name="District" Relationship="Self.FK_dbo_AccountAddress_dbo_Districts_district_id" FromRole="AccountAddress" ToRole="Districts" />
+          <NavigationProperty Name="Province" Relationship="Self.FK_dbo_AccountAddress_dbo_Provinces_province_id" FromRole="AccountAddress" ToRole="Provinces" />
+          <NavigationProperty Name="Ward" Relationship="Self.FK_dbo_AccountAddress_dbo_Wards_ward_id" FromRole="AccountAddress" ToRole="Wards" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="brand_id" />
+          </Key>
+          <Property Name="brand_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brand_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_dbo_Product_dbo_Brand_brand_id" FromRole="Brand" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="contact_id" />
+          </Key>
+          <Property Name="contact_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_by" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="update_by" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="delivery_id" />
+          </Key>
+          <Property Name="delivery_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="delivery_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_by" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="update_by" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_dbo_Order_dbo_Delivery_delivery_id" FromRole="Delivery" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Discount">
+          <Key>
+            <PropertyRef Name="disscount_id" />
+          </Key>
+          <Property Name="disscount_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="discount_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="discount_star" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="discount_end" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="discount_price" Type="Double" Nullable="false" />
+          <Property Name="discount_code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_dbo_Product_dbo_Discount_disscount_id" FromRole="Discount" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="district_id" />
+          </Key>
+          <Property Name="district_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="province_id" Type="Int32" Nullable="false" />
+          <Property Name="district_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AccountAddresses" Relationship="Self.FK_dbo_AccountAddress_dbo_Districts_district_id" FromRole="Districts" ToRole="AccountAddress" />
+          <NavigationProperty Name="Province" Relationship="Self.FK_dbo_Districts_dbo_Provinces_province_id" FromRole="Districts" ToRole="Provinces" />
+          <NavigationProperty Name="OrderAddresses" Relationship="Self.FK_dbo_OrderAddress_dbo_Districts_district_id" FromRole="Districts" ToRole="OrderAddress" />
+          <NavigationProperty Name="Wards" Relationship="Self.FK_dbo_Wards_dbo_Districts_district_id" FromRole="Districts" ToRole="Wards" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="feedback_id" />
+          </Key>
+          <Property Name="feedback_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="account_id" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="genre_id" Type="Int32" Nullable="false" />
+          <Property Name="disscount_id" Type="Int32" Nullable="false" />
+          <Property Name="rate_star" Type="Int32" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="stastus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Precision="3" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_dbo_Feedback_dbo_Account_account_id" FromRole="Feedback" ToRole="Account" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_dbo_Feedback_dbo_Product_product_id_genre_id_disscount_id" FromRole="Feedback" ToRole="Product" />
+          <NavigationProperty Name="ReplyFeedbacks" Relationship="Self.FK_dbo_ReplyFeedback_dbo_Feedback_feedback_id" FromRole="Feedback" ToRole="ReplyFeedback" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="genre_id" />
+          </Key>
+          <Property Name="genre_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="genre_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_dbo_Product_dbo_Genre_genre_id" FromRole="Genre" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Oder_Detail">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="genre_id" />
+            <PropertyRef Name="disscount_id" />
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="genre_id" Type="Int32" Nullable="false" />
+          <Property Name="disscount_id" Type="Int32" Nullable="false" />
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="transection" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_by" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_by" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_dbo_Oder_Detail_dbo_Order_order_id" FromRole="Oder_Detail" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_dbo_Oder_Detail_dbo_Product_product_id_genre_id_disscount_id" FromRole="Oder_Detail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="payment_id" Type="Int32" Nullable="false" />
+          <Property Name="delivery_id" Type="Int32" Nullable="false" />
+          <Property Name="oder_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="total" Type="Double" Nullable="false" />
+          <Property Name="account_id" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="order_note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="orderAddressId" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_dbo_Order_dbo_Account_account_id" FromRole="Order" ToRole="Account" />
+          <NavigationProperty Name="Delivery" Relationship="Self.FK_dbo_Order_dbo_Delivery_delivery_id" FromRole="Order" ToRole="Delivery" />
+          <NavigationProperty Name="Oder_Detail" Relationship="Self.FK_dbo_Oder_Detail_dbo_Order_order_id" FromRole="Order" ToRole="Oder_Detail" />
+          <NavigationProperty Name="OrderAddress" Relationship="Self.FK_dbo_Order_dbo_Order_Address_orderAddressId" FromRole="Order" ToRole="OrderAddress" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK_dbo_Order_dbo_Payment_payment_id" FromRole="Order" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="OrderAddress">
+          <Key>
+            <PropertyRef Name="orderAddressId" />
+          </Key>
+          <Property Name="orderAddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderPhonenumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="orderUsername" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="content" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="timesEdit" Type="Int32" Nullable="false" />
+          <Property Name="province_id" Type="Int32" />
+          <Property Name="district_id" Type="Int32" />
+          <Property Name="ward_id" Type="Int32" />
+          <NavigationProperty Name="District" Relationship="Self.FK_dbo_OrderAddress_dbo_Districts_district_id" FromRole="OrderAddress" ToRole="Districts" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_dbo_Order_dbo_Order_Address_orderAddressId" FromRole="OrderAddress" ToRole="Order" />
+          <NavigationProperty Name="Province" Relationship="Self.FK_dbo_OrderAddress_dbo_Provinces_province_id" FromRole="OrderAddress" ToRole="Provinces" />
+          <NavigationProperty Name="Ward" Relationship="Self.FK_dbo_OrderAddress_dbo_Wards_ward_id" FromRole="OrderAddress" ToRole="Wards" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="payment_id" />
+          </Key>
+          <Property Name="payment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="payment_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_by" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="update_by" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_dbo_Order_dbo_Payment_payment_id" FromRole="Payment" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="genre_id" />
+            <PropertyRef Name="disscount_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="genre_id" Type="Int32" Nullable="false" />
+          <Property Name="disscount_id" Type="Int32" Nullable="false" />
+          <Property Name="brand_id" Type="Int32" Nullable="false" />
+          <Property Name="product_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="view" Type="Int64" Nullable="false" />
+          <Property Name="buyturn" Type="Int64" Nullable="false" />
+          <Property Name="quantity" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="specifications" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK_dbo_Product_dbo_Brand_brand_id" FromRole="Product" ToRole="Brand" />
+          <NavigationProperty Name="Discount" Relationship="Self.FK_dbo_Product_dbo_Discount_disscount_id" FromRole="Product" ToRole="Discount" />
+          <NavigationProperty Name="Feedbacks" Relationship="Self.FK_dbo_Feedback_dbo_Product_product_id_genre_id_disscount_id" FromRole="Product" ToRole="Feedback" />
+          <NavigationProperty Name="Genre" Relationship="Self.FK_dbo_Product_dbo_Genre_genre_id" FromRole="Product" ToRole="Genre" />
+          <NavigationProperty Name="Oder_Detail" Relationship="Self.FK_dbo_Oder_Detail_dbo_Product_product_id_genre_id_disscount_id" FromRole="Product" ToRole="Oder_Detail" />
+          <NavigationProperty Name="ProductImages" Relationship="Self.FK_dbo_ProductImages_dbo_Product_product_id_genre_id_disscount_id" FromRole="Product" ToRole="ProductImages" />
+        </EntityType>
+        <EntityType Name="ProductImage">
+          <Key>
+            <PropertyRef Name="product_img_id" />
+          </Key>
+          <Property Name="product_img_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="genre_id" Type="Int32" Nullable="false" />
+          <Property Name="disscount_id" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_dbo_ProductImages_dbo_Product_product_id_genre_id_disscount_id" FromRole="ProductImages" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="province_id" />
+          </Key>
+          <Property Name="province_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="province_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AccountAddresses" Relationship="Self.FK_dbo_AccountAddress_dbo_Provinces_province_id" FromRole="Provinces" ToRole="AccountAddress" />
+          <NavigationProperty Name="Districts" Relationship="Self.FK_dbo_Districts_dbo_Provinces_province_id" FromRole="Provinces" ToRole="Districts" />
+          <NavigationProperty Name="OrderAddresses" Relationship="Self.FK_dbo_OrderAddress_dbo_Provinces_province_id" FromRole="Provinces" ToRole="OrderAddress" />
+        </EntityType>
+        <EntityType Name="ReplyFeedback">
+          <Key>
+            <PropertyRef Name="rep_feedback_id" />
+          </Key>
+          <Property Name="rep_feedback_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="stastus" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="feedback_id" Type="Int32" Nullable="false" />
+          <Property Name="account_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_dbo_ReplyFeedback_dbo_Account_account_id" FromRole="ReplyFeedback" ToRole="Account" />
+          <NavigationProperty Name="Feedback" Relationship="Self.FK_dbo_ReplyFeedback_dbo_Feedback_feedback_id" FromRole="ReplyFeedback" ToRole="Feedback" />
+        </EntityType>
+        <EntityType Name="Ward">
+          <Key>
+            <PropertyRef Name="ward_id" />
+          </Key>
+          <Property Name="ward_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="district_id" Type="Int32" Nullable="false" />
+          <Property Name="ward_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AccountAddresses" Relationship="Self.FK_dbo_AccountAddress_dbo_Wards_ward_id" FromRole="Wards" ToRole="AccountAddress" />
+          <NavigationProperty Name="District" Relationship="Self.FK_dbo_Wards_dbo_Districts_district_id" FromRole="Wards" ToRole="Districts" />
+          <NavigationProperty Name="OrderAddresses" Relationship="Self.FK_dbo_OrderAddress_dbo_Wards_ward_id" FromRole="Wards" ToRole="OrderAddress" />
+        </EntityType>
+        <Association Name="FK_dbo_AccountAddress_dbo_Account_account_id">
+          <End Role="Account" Type="Self.Account" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AccountAddress" Type="Self.AccountAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="AccountAddress">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Feedback_dbo_Account_account_id">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Order_dbo_Account_account_id">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ReplyFeedback_dbo_Account_account_id">
+          <End Role="Account" Type="Self.Account" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReplyFeedback" Type="Self.ReplyFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="ReplyFeedback">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AccountAddress_dbo_Districts_district_id">
+          <End Role="Districts" Type="Self.District" Multiplicity="1" />
+          <End Role="AccountAddress" Type="Self.AccountAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="district_id" />
+            </Principal>
+            <Dependent Role="AccountAddress">
+              <PropertyRef Name="district_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AccountAddress_dbo_Provinces_province_id">
+          <End Role="Provinces" Type="Self.Province" Multiplicity="1" />
+          <End Role="AccountAddress" Type="Self.AccountAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="province_id" />
+            </Principal>
+            <Dependent Role="AccountAddress">
+              <PropertyRef Name="province_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AccountAddress_dbo_Wards_ward_id">
+          <End Role="Wards" Type="Self.Ward" Multiplicity="1" />
+          <End Role="AccountAddress" Type="Self.AccountAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wards">
+              <PropertyRef Name="ward_id" />
+            </Principal>
+            <Dependent Role="AccountAddress">
+              <PropertyRef Name="ward_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Product_dbo_Brand_brand_id">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="brand_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="brand_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Order_dbo_Delivery_delivery_id">
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delivery">
+              <PropertyRef Name="delivery_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="delivery_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Product_dbo_Discount_disscount_id">
+          <End Role="Discount" Type="Self.Discount" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discount">
+              <PropertyRef Name="disscount_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="disscount_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Districts_dbo_Provinces_province_id">
+          <End Role="Provinces" Type="Self.Province" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Districts" Type="Self.District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="province_id" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="province_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_OrderAddress_dbo_Districts_district_id">
+          <End Role="Districts" Type="Self.District" Multiplicity="0..1" />
+          <End Role="OrderAddress" Type="Self.OrderAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="district_id" />
+            </Principal>
+            <Dependent Role="OrderAddress">
+              <PropertyRef Name="district_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Wards_dbo_Districts_district_id">
+          <End Role="Districts" Type="Self.District" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Wards" Type="Self.Ward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="district_id" />
+            </Principal>
+            <Dependent Role="Wards">
+              <PropertyRef Name="district_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Feedback_dbo_Product_product_id_genre_id_disscount_id">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+              <PropertyRef Name="genre_id" />
+              <PropertyRef Name="disscount_id" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="product_id" />
+              <PropertyRef Name="genre_id" />
+              <PropertyRef Name="disscount_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ReplyFeedback_dbo_Feedback_feedback_id">
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReplyFeedback" Type="Self.ReplyFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Feedback">
+              <PropertyRef Name="feedback_id" />
+            </Principal>
+            <Dependent Role="ReplyFeedback">
+              <PropertyRef Name="feedback_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Product_dbo_Genre_genre_id">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="genre_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="genre_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Oder_Detail_dbo_Order_order_id">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Oder_Detail" Type="Self.Oder_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="order_id" />
+            </Principal>
+            <Dependent Role="Oder_Detail">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Oder_Detail_dbo_Product_product_id_genre_id_disscount_id">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Oder_Detail" Type="Self.Oder_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+              <PropertyRef Name="genre_id" />
+              <PropertyRef Name="disscount_id" />
+            </Principal>
+            <Dependent Role="Oder_Detail">
+              <PropertyRef Name="product_id" />
+              <PropertyRef Name="genre_id" />
+              <PropertyRef Name="disscount_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Order_dbo_Order_Address_orderAddressId">
+          <End Role="OrderAddress" Type="Self.OrderAddress" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderAddress">
+              <PropertyRef Name="orderAddressId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="orderAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Order_dbo_Payment_payment_id">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="payment_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_OrderAddress_dbo_Provinces_province_id">
+          <End Role="Provinces" Type="Self.Province" Multiplicity="0..1" />
+          <End Role="OrderAddress" Type="Self.OrderAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="province_id" />
+            </Principal>
+            <Dependent Role="OrderAddress">
+              <PropertyRef Name="province_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_OrderAddress_dbo_Wards_ward_id">
+          <End Role="Wards" Type="Self.Ward" Multiplicity="0..1" />
+          <End Role="OrderAddress" Type="Self.OrderAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wards">
+              <PropertyRef Name="ward_id" />
+            </Principal>
+            <Dependent Role="OrderAddress">
+              <PropertyRef Name="ward_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ProductImages_dbo_Product_product_id_genre_id_disscount_id">
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductImages" Type="Self.ProductImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+              <PropertyRef Name="genre_id" />
+              <PropertyRef Name="disscount_id" />
+            </Principal>
+            <Dependent Role="ProductImages">
+              <PropertyRef Name="product_id" />
+              <PropertyRef Name="genre_id" />
+              <PropertyRef Name="disscount_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="kaomeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="AccountAddresses" EntityType="Self.AccountAddress" />
+          <EntitySet Name="Brands" EntityType="Self.Brand" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="Deliveries" EntityType="Self.Delivery" />
+          <EntitySet Name="Discounts" EntityType="Self.Discount" />
+          <EntitySet Name="Districts" EntityType="Self.District" />
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+          <EntitySet Name="Genres" EntityType="Self.Genre" />
+          <EntitySet Name="Oder_Detail" EntityType="Self.Oder_Detail" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="OrderAddresses" EntityType="Self.OrderAddress" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductImages" EntityType="Self.ProductImage" />
+          <EntitySet Name="Provinces" EntityType="Self.Province" />
+          <EntitySet Name="ReplyFeedbacks" EntityType="Self.ReplyFeedback" />
+          <EntitySet Name="Wards" EntityType="Self.Ward" />
+          <AssociationSet Name="FK_dbo_AccountAddress_dbo_Account_account_id" Association="Self.FK_dbo_AccountAddress_dbo_Account_account_id">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="AccountAddress" EntitySet="AccountAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Feedback_dbo_Account_account_id" Association="Self.FK_dbo_Feedback_dbo_Account_account_id">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Order_dbo_Account_account_id" Association="Self.FK_dbo_Order_dbo_Account_account_id">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ReplyFeedback_dbo_Account_account_id" Association="Self.FK_dbo_ReplyFeedback_dbo_Account_account_id">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="ReplyFeedback" EntitySet="ReplyFeedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AccountAddress_dbo_Districts_district_id" Association="Self.FK_dbo_AccountAddress_dbo_Districts_district_id">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="AccountAddress" EntitySet="AccountAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AccountAddress_dbo_Provinces_province_id" Association="Self.FK_dbo_AccountAddress_dbo_Provinces_province_id">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="AccountAddress" EntitySet="AccountAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AccountAddress_dbo_Wards_ward_id" Association="Self.FK_dbo_AccountAddress_dbo_Wards_ward_id">
+            <End Role="Wards" EntitySet="Wards" />
+            <End Role="AccountAddress" EntitySet="AccountAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Product_dbo_Brand_brand_id" Association="Self.FK_dbo_Product_dbo_Brand_brand_id">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Order_dbo_Delivery_delivery_id" Association="Self.FK_dbo_Order_dbo_Delivery_delivery_id">
+            <End Role="Delivery" EntitySet="Deliveries" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Product_dbo_Discount_disscount_id" Association="Self.FK_dbo_Product_dbo_Discount_disscount_id">
+            <End Role="Discount" EntitySet="Discounts" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Districts_dbo_Provinces_province_id" Association="Self.FK_dbo_Districts_dbo_Provinces_province_id">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_OrderAddress_dbo_Districts_district_id" Association="Self.FK_dbo_OrderAddress_dbo_Districts_district_id">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="OrderAddress" EntitySet="OrderAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Wards_dbo_Districts_district_id" Association="Self.FK_dbo_Wards_dbo_Districts_district_id">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="Wards" EntitySet="Wards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Feedback_dbo_Product_product_id_genre_id_disscount_id" Association="Self.FK_dbo_Feedback_dbo_Product_product_id_genre_id_disscount_id">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ReplyFeedback_dbo_Feedback_feedback_id" Association="Self.FK_dbo_ReplyFeedback_dbo_Feedback_feedback_id">
+            <End Role="Feedback" EntitySet="Feedbacks" />
+            <End Role="ReplyFeedback" EntitySet="ReplyFeedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Product_dbo_Genre_genre_id" Association="Self.FK_dbo_Product_dbo_Genre_genre_id">
+            <End Role="Genre" EntitySet="Genres" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Oder_Detail_dbo_Order_order_id" Association="Self.FK_dbo_Oder_Detail_dbo_Order_order_id">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Oder_Detail" EntitySet="Oder_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Oder_Detail_dbo_Product_product_id_genre_id_disscount_id" Association="Self.FK_dbo_Oder_Detail_dbo_Product_product_id_genre_id_disscount_id">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Oder_Detail" EntitySet="Oder_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Order_dbo_Order_Address_orderAddressId" Association="Self.FK_dbo_Order_dbo_Order_Address_orderAddressId">
+            <End Role="OrderAddress" EntitySet="OrderAddresses" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Order_dbo_Payment_payment_id" Association="Self.FK_dbo_Order_dbo_Payment_payment_id">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_OrderAddress_dbo_Provinces_province_id" Association="Self.FK_dbo_OrderAddress_dbo_Provinces_province_id">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="OrderAddress" EntitySet="OrderAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_OrderAddress_dbo_Wards_ward_id" Association="Self.FK_dbo_OrderAddress_dbo_Wards_ward_id">
+            <End Role="Wards" EntitySet="Wards" />
+            <End Role="OrderAddress" EntitySet="OrderAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ProductImages_dbo_Product_product_id_genre_id_disscount_id" Association="Self.FK_dbo_ProductImages_dbo_Product_product_id_genre_id_disscount_id">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductImages" EntitySet="ProductImages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="kaomeModelStoreContainer" CdmEntityContainer="kaomeEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="kaomeModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="kaomeModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="Requestcode" ColumnName="Requestcode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountAddresses">
+            <EntityTypeMapping TypeName="kaomeModel.AccountAddress">
+              <MappingFragment StoreEntitySet="AccountAddress">
+                <ScalarProperty Name="account_address_id" ColumnName="account_address_id" />
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+                <ScalarProperty Name="province_id" ColumnName="province_id" />
+                <ScalarProperty Name="district_id" ColumnName="district_id" />
+                <ScalarProperty Name="ward_id" ColumnName="ward_id" />
+                <ScalarProperty Name="accountPhoneNumber" ColumnName="accountPhoneNumber" />
+                <ScalarProperty Name="accountUsername" ColumnName="accountUsername" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="kaomeModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+                <ScalarProperty Name="brand_name" ColumnName="brand_name" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="kaomeModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="contact_id" ColumnName="contact_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deliveries">
+            <EntityTypeMapping TypeName="kaomeModel.Delivery">
+              <MappingFragment StoreEntitySet="Delivery">
+                <ScalarProperty Name="delivery_id" ColumnName="delivery_id" />
+                <ScalarProperty Name="delivery_name" ColumnName="delivery_name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Discounts">
+            <EntityTypeMapping TypeName="kaomeModel.Discount">
+              <MappingFragment StoreEntitySet="Discount">
+                <ScalarProperty Name="disscount_id" ColumnName="disscount_id" />
+                <ScalarProperty Name="discount_name" ColumnName="discount_name" />
+                <ScalarProperty Name="discount_star" ColumnName="discount_star" />
+                <ScalarProperty Name="discount_end" ColumnName="discount_end" />
+                <ScalarProperty Name="discount_price" ColumnName="discount_price" />
+                <ScalarProperty Name="discount_code" ColumnName="discount_code" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="kaomeModel.District">
+              <MappingFragment StoreEntitySet="Districts">
+                <ScalarProperty Name="district_id" ColumnName="district_id" />
+                <ScalarProperty Name="province_id" ColumnName="province_id" />
+                <ScalarProperty Name="district_name" ColumnName="district_name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="kaomeModel.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="feedback_id" ColumnName="feedback_id" />
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+                <ScalarProperty Name="disscount_id" ColumnName="disscount_id" />
+                <ScalarProperty Name="rate_star" ColumnName="rate_star" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="stastus" ColumnName="stastus" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="content" ColumnName="content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genres">
+            <EntityTypeMapping TypeName="kaomeModel.Genre">
+              <MappingFragment StoreEntitySet="Genre">
+                <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+                <ScalarProperty Name="genre_name" ColumnName="genre_name" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oder_Detail">
+            <EntityTypeMapping TypeName="kaomeModel.Oder_Detail">
+              <MappingFragment StoreEntitySet="Oder_Detail">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+                <ScalarProperty Name="disscount_id" ColumnName="disscount_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="transection" ColumnName="transection" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="kaomeModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+                <ScalarProperty Name="delivery_id" ColumnName="delivery_id" />
+                <ScalarProperty Name="oder_date" ColumnName="oder_date" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="order_note" ColumnName="order_note" />
+                <ScalarProperty Name="orderAddressId" ColumnName="orderAddressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderAddresses">
+            <EntityTypeMapping TypeName="kaomeModel.OrderAddress">
+              <MappingFragment StoreEntitySet="OrderAddress">
+                <ScalarProperty Name="orderAddressId" ColumnName="orderAddressId" />
+                <ScalarProperty Name="orderPhonenumber" ColumnName="orderPhonenumber" />
+                <ScalarProperty Name="orderUsername" ColumnName="orderUsername" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="timesEdit" ColumnName="timesEdit" />
+                <ScalarProperty Name="province_id" ColumnName="province_id" />
+                <ScalarProperty Name="district_id" ColumnName="district_id" />
+                <ScalarProperty Name="ward_id" ColumnName="ward_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="kaomeModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+                <ScalarProperty Name="payment_name" ColumnName="payment_name" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="kaomeModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+                <ScalarProperty Name="disscount_id" ColumnName="disscount_id" />
+                <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="view" ColumnName="view" />
+                <ScalarProperty Name="buyturn" ColumnName="buyturn" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="specifications" ColumnName="specifications" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductImages">
+            <EntityTypeMapping TypeName="kaomeModel.ProductImage">
+              <MappingFragment StoreEntitySet="ProductImages">
+                <ScalarProperty Name="product_img_id" ColumnName="product_img_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+                <ScalarProperty Name="disscount_id" ColumnName="disscount_id" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="kaomeModel.Province">
+              <MappingFragment StoreEntitySet="Provinces">
+                <ScalarProperty Name="province_id" ColumnName="province_id" />
+                <ScalarProperty Name="province_name" ColumnName="province_name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReplyFeedbacks">
+            <EntityTypeMapping TypeName="kaomeModel.ReplyFeedback">
+              <MappingFragment StoreEntitySet="ReplyFeedback">
+                <ScalarProperty Name="rep_feedback_id" ColumnName="rep_feedback_id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="stastus" ColumnName="stastus" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="feedback_id" ColumnName="feedback_id" />
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wards">
+            <EntityTypeMapping TypeName="kaomeModel.Ward">
+              <MappingFragment StoreEntitySet="Wards">
+                <ScalarProperty Name="ward_id" ColumnName="ward_id" />
+                <ScalarProperty Name="district_id" ColumnName="district_id" />
+                <ScalarProperty Name="ward_name" ColumnName="ward_name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

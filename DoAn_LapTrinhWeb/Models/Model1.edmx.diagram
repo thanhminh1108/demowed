@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e48999d1f6f24dd0ab4d7e8b4d9d0e10" Name="Diagram1">
+        <EntityTypeShape EntityType="kaomeModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.Account" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.AccountAddress" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.Brand" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.Contact" Width="1.5" PointX="7.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.Delivery" Width="1.5" PointX="3.75" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.Discount" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.District" Width="1.5" PointX="1.5" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.Feedback" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.Genre" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.Oder_Detail" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.Order" Width="1.5" PointX="6" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.OrderAddress" Width="1.5" PointX="3.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.Payment" Width="1.5" PointX="3.75" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.Product" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.ProductImage" Width="1.5" PointX="5.25" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.Province" Width="1.5" PointX="1.5" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.ReplyFeedback" Width="1.5" PointX="10.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kaomeModel.Ward" Width="1.5" PointX="1.5" PointY="27.5" IsExpanded="true" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_AccountAddress_dbo_Account_account_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_Feedback_dbo_Account_account_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_Order_dbo_Account_account_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_ReplyFeedback_dbo_Account_account_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_AccountAddress_dbo_Districts_district_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_AccountAddress_dbo_Provinces_province_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_AccountAddress_dbo_Wards_ward_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_Product_dbo_Brand_brand_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_Order_dbo_Delivery_delivery_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_Product_dbo_Discount_disscount_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_Districts_dbo_Provinces_province_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_OrderAddress_dbo_Districts_district_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_Wards_dbo_Districts_district_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_Feedback_dbo_Product_product_id_genre_id_disscount_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_ReplyFeedback_dbo_Feedback_feedback_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_Product_dbo_Genre_genre_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_Oder_Detail_dbo_Order_order_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_Oder_Detail_dbo_Product_product_id_genre_id_disscount_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_Order_dbo_Order_Address_orderAddressId" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_Order_dbo_Payment_payment_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_OrderAddress_dbo_Provinces_province_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_OrderAddress_dbo_Wards_ward_id" ManuallyRouted="false" />
+        <AssociationConnector Association="kaomeModel.FK_dbo_ProductImages_dbo_Product_product_id_genre_id_disscount_id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
